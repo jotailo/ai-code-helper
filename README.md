@@ -1,1 +1,1 @@
-# this is a langcain4j project !!!
+# this is a LangChain4j project !!!
