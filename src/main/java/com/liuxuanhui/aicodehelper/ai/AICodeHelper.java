@@ -22,8 +22,17 @@ public class AICodeHelper {
     @Resource
     private ChatModel qwenChatModel;
 
+    // 实现和大模型对话，只限文本内容
     public String chat(String message){
         UserMessage userMessage = UserMessage.from(message);
+        ChatResponse chatResponse = qwenChatModel.chat(userMessage);
+        AiMessage aiMessage = chatResponse.aiMessage();
+        log.info("AI 输出：" + aiMessage.toString());
+        return aiMessage.text();
+    }
+
+    // 实现多模态大模型对话，包括识别图片等内容
+    public String chatWithOtherType(UserMessage userMessage){
         ChatResponse chatResponse = qwenChatModel.chat(userMessage);
         AiMessage aiMessage = chatResponse.aiMessage();
         log.info("AI 输出：" + aiMessage.toString());
