@@ -34,16 +34,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>dev.langchain4j</groupId>
-			<artifactId>langchain4j-community-dashscope-spring-boot-starter</artifactId>
-			<version>1.1.0-beta7</version>
-		</dependency>
+		<!-- LangChain4j 核心库 -->
 		<dependency>
 			<groupId>dev.langchain4j</groupId>
 			<artifactId>langchain4j</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+
+		<!-- Spring Boot 核心 Starter -->
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-spring-boot-starter</artifactId>
+			<version>1.1.0-beta7</version>
+		</dependency>
+
+		<!-- DashScope/Spring Boot Starter -->
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-community-dashscope-spring-boot-starter</artifactId>
+			<version>1.1.0-beta7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

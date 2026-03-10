@@ -1,7 +1,6 @@
 package com.liuxuanhui.aicodehelper.ai;
 
 import dev.langchain4j.model.chat.ChatModel;
-import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Priority;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
@@ -34,5 +33,11 @@ class AICodeHelperServiceTest {
         String userMessage = "你好我要学习编程，帮我指定学习报告";
         AICodeHelperService.Report report = aiCodeHelperService.chatforReport(userMessage);
         System.out.println(report);
+    }
+
+    @Test
+    void TextWithRag(){
+        String chat = aiCodeHelperService.chat("怎么学习java？有那些常见的面试题？");
+        System.out.println(chat);
     }
 }
