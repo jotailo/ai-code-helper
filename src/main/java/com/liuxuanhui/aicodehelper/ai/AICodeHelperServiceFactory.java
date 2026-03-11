@@ -1,5 +1,6 @@
 package com.liuxuanhui.aicodehelper.ai;
 
+import com.liuxuanhui.aicodehelper.ai.tools.InterviewQuestionTool;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
@@ -33,7 +34,8 @@ public class AICodeHelperServiceFactory {
         AICodeHelperService aiCodeHelperService = AiServices.builder(AICodeHelperService.class)
                 .chatModel(qwenChatModel)
                 .chatMemory(chatMemory) // 会话记忆
-                .contentRetriever(contentRetriever)
+                .contentRetriever(contentRetriever) //Rag
+                .tools(new InterviewQuestionTool()) //工具调用
                 .build();
         return aiCodeHelperService;
     }
