@@ -23,8 +23,8 @@ public class AICodeHelperServiceFactory {
     @Resource
     private ChatModel qwenChatModel;
 
-//    @Resource
-//    private ContentRetriever contentRetriever;
+    @Resource
+    private ContentRetriever contentRetriever;
 
     @Bean
     public AICodeHelperService aiCodeHelperService() {
@@ -33,7 +33,7 @@ public class AICodeHelperServiceFactory {
         AICodeHelperService aiCodeHelperService = AiServices.builder(AICodeHelperService.class)
                 .chatModel(qwenChatModel)
                 .chatMemory(chatMemory) // 会话记忆
-//                .contentRetriever(contentRetriever)
+                .contentRetriever(contentRetriever)
                 .build();
         return aiCodeHelperService;
     }
