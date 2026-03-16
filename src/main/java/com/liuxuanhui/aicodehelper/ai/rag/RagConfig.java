@@ -21,12 +21,12 @@ import java.util.List;
 
 /**
  * @Author:Liu Xuanhui
- * @Description:加载RAG
+ * @Description:加载RAG（检索增强生成）
  * @DateTime: 2026/3/8 16:50
  * @Component:
  */
 
-@Configuration
+//@Configuration
 public class RagConfig {
 
         @Resource

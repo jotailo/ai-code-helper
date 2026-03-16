@@ -1,9 +1,15 @@
 package com.liuxuanhui.aicodehelper.ai;
 
+import com.liuxuanhui.aicodehelper.ai.guardrail.SafeInputGuardRail;
+import com.liuxuanhui.aicodehelper.ai.guardrail.SafeOutputGuardRail;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
+import dev.langchain4j.service.guardrail.OutputGuardrails;
 
 import java.util.List;
 
+@InputGuardrails({SafeInputGuardRail.class})
+@OutputGuardrails({SafeOutputGuardRail.class})
 public interface AICodeHelperService {
 
 //    直接写在注解里面@SystemMessage("你好，我是编程领域的编程小助手，有什么问题我可以为你解答吗？^-^")

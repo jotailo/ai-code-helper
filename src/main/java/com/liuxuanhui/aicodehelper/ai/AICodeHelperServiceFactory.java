@@ -1,6 +1,8 @@
 package com.liuxuanhui.aicodehelper.ai;
 
+import com.liuxuanhui.aicodehelper.ai.mcp.MCPConfig;
 import com.liuxuanhui.aicodehelper.ai.tools.InterviewQuestionTool;
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
@@ -10,6 +12,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @Author:Liu Xuanhui
@@ -22,20 +25,24 @@ import org.springframework.context.annotation.Configuration;
 public class AICodeHelperServiceFactory {
 
     @Resource
-    private ChatModel qwenChatModel;
+    private ChatModel myqwenChatModel;
 
     @Resource
     private ContentRetriever contentRetriever;
+
+    @Resource
+    private McpToolProvider mcpToolProvider;
 
     @Bean
     public AICodeHelperService aiCodeHelperService() {
         ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(10);
         // 构造aiservice
         AICodeHelperService aiCodeHelperService = AiServices.builder(AICodeHelperService.class)
-                .chatModel(qwenChatModel)
+                .chatModel(myqwenChatModel)
                 .chatMemory(chatMemory) // 会话记忆
-                .contentRetriever(contentRetriever) //Rag
+//                .contentRetriever(contentRetriever) //Rag 调用Embedding model没有免费额度
                 .tools(new InterviewQuestionTool()) //工具调用
+                .toolProvider(mcpToolProvider) // MCP工具调用
                 .build();
         return aiCodeHelperService;
     }

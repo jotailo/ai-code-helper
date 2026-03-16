@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Author:Liu Xuanhui
- * @Description:
+ * @Description: 多模态和系统提示词
  * @DateTime: 2026/1/13 17:39
  * @Component:
  */
