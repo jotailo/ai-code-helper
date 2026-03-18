@@ -2,9 +2,12 @@ package com.liuxuanhui.aicodehelper.ai;
 
 import com.liuxuanhui.aicodehelper.ai.guardrail.SafeInputGuardRail;
 import com.liuxuanhui.aicodehelper.ai.guardrail.SafeOutputGuardRail;
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.guardrail.OutputGuardrails;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -20,4 +23,7 @@ public interface AICodeHelperService {
     Report chatforReport(String userMessage);
 
     record Report(String name, List<String> suggestion){};
+
+    // 流式对话
+    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
 }
