@@ -9,6 +9,7 @@ package com.liuxuanhui.aicodehelper.controller;
 
 import com.liuxuanhui.aicodehelper.ai.AICodeHelperService;
 import jakarta.annotation.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class AiController {
     @Resource
     private AICodeHelperService aiCodeHelperService;
 
-    @GetMapping("/chat")
+    @GetMapping(value="/chat",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> chat(int memoryId, String message) {
         return aiCodeHelperService.chatStream(memoryId, message)
             .map(chunk -> ServerSentEvent.<String>builder()
