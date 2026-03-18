@@ -25,5 +25,6 @@ public interface AICodeHelperService {
     record Report(String name, List<String> suggestion){};
 
     // 流式对话
+    @SystemMessage(fromResource = "system-prompt.txt")
     Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
 }
